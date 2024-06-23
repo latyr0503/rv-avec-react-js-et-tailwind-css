@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+h1, h2{
+    font-family: "Delius", cursive;
+}
+body{
+    font-family: "Montserrat", sans-serif;
+
+}
