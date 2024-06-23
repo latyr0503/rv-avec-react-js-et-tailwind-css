@@ -6,7 +6,7 @@ const IntroductionScreen = () => {
   return (
     <div className="grid grid-cols-2">
       <div className="px-16 content-center">
-        <h2 className="text-7xl">Rendez-vous</h2>
+        <h2 className="text-7xl">Rendez-vous </h2>
         <p className="my-10">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
           obcaecati, maiores eveniet sunt, veritatis repellendus, quidem magnam
