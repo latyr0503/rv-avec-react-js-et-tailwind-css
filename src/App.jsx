@@ -12,6 +12,8 @@ import TableauDeBord from "./pages/dashbord/TableauDeBord";
 import Meet from "./pages/dashbord/Meet";
 import MesPatients from "./pages/dashbord/MesPatients";
 import MyAccount from "./pages/dashbord/MyAccount";
+import { Registerrv } from "./pages/dashbord/Registerrv";
+import { Detail } from "./pages/dashbord/Detail";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="/dashboard" element={<TableauDeBord />} />
           <Route path="/dashboard/mes-rendez-vous" element={<Meet />} />
+          <Route path="/dashboard/register" element={<Registerrv />} />
+          <Route path="/dashboard/Detail" element={<Detail />} />
           <Route path="/dashboard/mes-patients" element={<MesPatients />} />
           <Route path="/dashboard/mon-compte" element={<MyAccount />} />
         </Route>

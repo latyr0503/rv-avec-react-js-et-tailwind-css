@@ -5,7 +5,7 @@ import userProfil from "../assets/Ellipse 12.png";
 
 export const NavDashboard = () => {
   return (
-    <div className="flex justify-evenly items-center">
+    <div className="flex justify-between px-12 py-5 items-center">
       <div className="flex items-center bg-sky-900 rounded-full p-3 h-14 w-2/4">
         <CiSearch className="text-2xl text-white font-bold" />
         <input

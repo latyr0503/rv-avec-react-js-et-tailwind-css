@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../assets/RVS 1.png";
 import userProfil from "../assets/Ellipse 12.png";
 import { Link } from "react-router-dom";
-import { IoGrid, IoHomeSharp, IoLogOut } from "react-icons/io5";
+import { IoGrid, IoHomeSharp } from "react-icons/io5";
 import { FaList, FaUserCog, FaUserFriends } from "react-icons/fa";
 
 export const Sidebar = () => {
@@ -21,7 +21,7 @@ export const Sidebar = () => {
     { title: "Mon Compte", path: "/dashboard/mon-compte", icon: <FaUserCog /> },
   ];
   return (
-    <div>
+    <div >
       <Link to="/dashboard">
         <img
           src={logo}
@@ -31,19 +31,18 @@ export const Sidebar = () => {
         />
       </Link>
       <Link to={"/dashboard"}>
-        <button className="flex gap-3 my-5 items-center p-4 w-full bg-white">
+        <button className="flex mb-5 gap-3 items-center p-5 w-full bg-white">
           <IoGrid className="text-sky-900 text-3xl" />
           <span className="font-semibold text-sky-900">Tableau de bord</span>
         </button>
       </Link>
-
       <img
         src={userProfil}
         className="mx-auto mb-4"
         width={100}
         alt="Float UI logo"
       />
-      <ul className="ms-3">
+      <ul className="ms-5">
         {navigation.map((item, idx) => {
           return (
             <li key={idx} className="text-white">
@@ -59,12 +58,6 @@ export const Sidebar = () => {
         })}
       </ul>
       <Link to={"/"}>
-        {/* <button className="flex gap-3 items-center mt-8  px-4 w-full p-4 hover:bg-white ">
-          <IoLogOut className="text-sky-900 text-3xl" />
-          <span className="font-semibold text-white  hover:text-sky-900 ">
-            Deconnexion
-          </span>
-        </button> */}
         <button class="mt-8 mx-auto group flex items-center justify-start w-11 h-11 bg-red-600 rounded-full cursor-pointer relative overflow-hidden transition-all duration-200 shadow-lg hover:w-44 hover:rounded-lg active:translate-x-1 active:translate-y-1">
           <div class="flex items-center justify-center w-full transition-all duration-300 group-hover:justify-start group-hover:px-3">
             <svg class="w-4 h-4" viewBox="0 0 512 512" fill="white">
