@@ -1,31 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsFillBellFill } from "react-icons/bs";
 import userphoto from "../../assets/Ellipse 12.png";
 import Card from "../../components/Card";
 
 export default function TableauDeBord() {
+  const [stats, setStats] = useState({
+    patientsCount: 0,
+    rendezVousCount: 0,
+  });
+
+  useEffect(() => {
+    const fetchStatistics = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:3000/dashboard/statistics"
+        );
+        const data = await response.json();
+        setStats(data);
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des statistiques :",
+          error
+        );
+      }
+    };
+
+    fetchStatistics();
+  }, []);
+
   const table = [
     {
       className: "bg-sky-700 p-10",
-      number: "98",
+      number: stats.rendezVousCount,
       text: "Liste des rendez-vous",
     },
     {
       className: "bg-green-700 p-10",
-      number: "76",
+      number: stats.patientsCount,
       text: "Liste des patients",
     },
     {
-      className: "bg-purple-700 p-10",
-      number: "29",
-      text: "Liste des client",
+      className: "bg-yellow-700 p-10",
+      number: stats.rendezVousCount,
+      text: "Liste des rendez-vous",
     },
     {
-      className: "bg-yellow-700 p-10",
-      number: "49",
-      text: "Liste des employers",
+      className: "bg-pink-700 p-10",
+      number: stats.patientsCount,
+      text: "Liste des patients",
     },
   ];
+
   return (
     <div className="py-5 px-20">
       <div className="flex justify-between gap-5">
@@ -46,15 +71,14 @@ export default function TableauDeBord() {
 
       <h2 className="text-7xl my-5">Rendez-Vous</h2>
       <div className="grid grid-cols-2 gap-5">
-        {table.map((awa) => {
-          return (
-            <Card
-              className={awa.className}
-              number={awa.number}
-              text={awa.text}
-            />
-          );
-        })}
+        {table.map((awa, index) => (
+          <Card
+            key={index}
+            className={awa.className}
+            number={awa.number}
+            text={awa.text}
+          />
+        ))}
       </div>
     </div>
   );
