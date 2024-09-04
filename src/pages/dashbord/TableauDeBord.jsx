@@ -13,7 +13,7 @@ export default function TableauDeBord() {
     const fetchStatistics = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/dashboard/statistics"
+          "https://prise-de-rv-backend-nestjs.onrender.com/dashboard/statistics"
         );
         const data = await response.json();
         setStats(data);
@@ -24,7 +24,6 @@ export default function TableauDeBord() {
         );
       }
     };
-
     fetchStatistics();
   }, []);
 
@@ -35,6 +34,11 @@ export default function TableauDeBord() {
       text: "Liste des rendez-vous",
     },
     {
+      className: "bg-pink-700 p-10",
+      number: stats.patientsCount,
+      text: "Liste des patients",
+    },
+    {
       className: "bg-green-700 p-10",
       number: stats.patientsCount,
       text: "Liste des patients",
@@ -43,11 +47,6 @@ export default function TableauDeBord() {
       className: "bg-yellow-700 p-10",
       number: stats.rendezVousCount,
       text: "Liste des rendez-vous",
-    },
-    {
-      className: "bg-pink-700 p-10",
-      number: stats.patientsCount,
-      text: "Liste des patients",
     },
   ];
 

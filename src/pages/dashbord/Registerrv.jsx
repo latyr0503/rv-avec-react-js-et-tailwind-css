@@ -17,7 +17,7 @@ export const Registerrv = () => {
 
     try {
       // Envoyer les données du formulaire à l'API
-      await axios.post("http://localhost:3000/rendezvous", {
+      await axios.post("https://prise-de-rv-backend-nestjs.onrender.com/rendezvous", {
         object,
         doctor,
         patient,

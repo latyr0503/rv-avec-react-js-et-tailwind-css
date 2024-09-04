@@ -10,7 +10,7 @@ export default function MesPatients() {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/patient");
+        const response = await axios.get("https://prise-de-rv-backend-nestjs.onrender.com/patient");
         setPatients(response.data);
       } catch (error) {
         setErrorMessage("Erreur lors de la récupération des patients");

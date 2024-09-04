@@ -37,7 +37,7 @@ export const Inscription = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3000/auth/signup",
+        "https://prise-de-rv-backend-nestjs.onrender.com/auth/signup",
         formData
       );
       console.log(response.data);

@@ -31,7 +31,7 @@ export const AddPatient = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3000/patient",
+        "https://prise-de-rv-backend-nestjs.onrender.com/patient",
         formData
       );
       setErrorMessage("");

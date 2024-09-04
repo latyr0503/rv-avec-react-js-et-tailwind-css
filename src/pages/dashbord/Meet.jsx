@@ -10,7 +10,7 @@ export default function Meet() {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/rendezvous"); // Remplacez par l'URL correcte
+        const response = await axios.get("https://prise-de-rv-backend-nestjs.onrender.com/rendezvous"); // Remplacez par l'URL correcte
         setAppointments(response.data);
       } catch (error) {
         console.error("Erreur lors de la récupération des rendez-vous", error);
