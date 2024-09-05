@@ -3,14 +3,14 @@ import { useState } from "react";
 import logo from "../assets/RVS 1.png";
 import { Link, Outlet } from "react-router-dom";
 
-const   Navbar = () => {
+const Navbar = () => {
   const [state, setState] = useState(false);
 
-  const navigation = [
-    { title: "ACCUEIL", path: "/accueil" },
-    { title: "MES RENDEZ-VOUS", path: "/rv" },
-    { title: "MON COMPTE", path: "/mc" },
-  ];
+  // const navigation = [
+  //   { title: "ACCUEIL", path: "/accueil" },
+  //   { title: "MES RENDEZ-VOUS", path: "/rv" },
+  //   { title: "MON COMPTE", path: "/mc" },
+  // ];
   return (
     <nav className="bg-white w-full border-b md:border-0 md:static">
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-5">
@@ -60,7 +60,7 @@ const   Navbar = () => {
             state ? "block" : "hidden"
           }`}
         >
-          <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+          {/* <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
             {navigation.map((item, idx) => {
               return (
                 <li key={idx} className="text-gray-600 hover:text-indigo-600">
@@ -68,7 +68,7 @@ const   Navbar = () => {
                 </li>
               );
             })}
-          </ul>
+          </ul> */}
         </div>
         <div className="hidden md:inline-block">
           <Link
@@ -81,7 +81,7 @@ const   Navbar = () => {
             to="/Inscription"
             className="p-3 text-whitebg-sky-500	bg-sky-900 text-white hover:bg-black rounded-md shadow"
           >
-            Deconnexion
+            S'inscrire
           </Link>
         </div>
       </div>

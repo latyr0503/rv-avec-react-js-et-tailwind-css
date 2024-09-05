@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { SlSocialGoogle } from "react-icons/sl";
 import { Link, useNavigate } from "react-router-dom";
 
 export const Inscription = () => {
   const [formData, setFormData] = useState({
-    username: "",
     fullName: "",
     email: "",
     phoneNumber: "",
@@ -15,6 +13,7 @@ export const Inscription = () => {
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // Ajout du loader
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,7 +23,6 @@ export const Inscription = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
-      !formData.username ||
       !formData.fullName ||
       !formData.email ||
       !formData.phoneNumber ||
@@ -35,6 +33,8 @@ export const Inscription = () => {
       alert("Tous les champs doivent être remplis.");
       return;
     }
+
+    setIsLoading(true); // Démarrage du loader
     try {
       const response = await axios.post(
         "https://prise-de-rv-backend-nestjs.onrender.com/auth/signup",
@@ -42,12 +42,9 @@ export const Inscription = () => {
       );
       console.log(response.data);
       navigate("/connexion");
-      alert("Inscription reussie");
     } catch (error) {
       if (error.response) {
-        // Gérer les erreurs du backend
         if (error.response.status === 409) {
-          // Erreur 409 : Conflit, par exemple, username ou email déjà pris
           alert("Le nom d'utilisateur ou l'email est déjà pris.");
         } else {
           setErrorMessage(
@@ -57,6 +54,8 @@ export const Inscription = () => {
       } else {
         setErrorMessage("Une erreur s'est produite");
       }
+    } finally {
+      setIsLoading(false); // Arrêt du loader
     }
   };
 
@@ -69,14 +68,6 @@ export const Inscription = () => {
           <div className="w-56 rotate-12 h-80 rounded-2xl absolute top-28 -left-40 bg-sky-500"></div>
         </div>
         <form onSubmit={handleSubmit}>
-          <input
-            className="bg-gray-200 border-none w-full h-12 rounded-lg px-4 my-5"
-            type="text"
-            name="username"
-            placeholder="Entrer votre username"
-            onChange={handleChange}
-            value={formData.username}
-          />
           <input
             className="bg-gray-200 border-none w-full h-12 rounded-lg px-4 mb-5"
             type="text"
@@ -125,23 +116,31 @@ export const Inscription = () => {
             onChange={handleChange}
             value={formData.speciality}
           />
-          <button
-            type="submit"
-            className="w-full py-3 text-white duration-150 bg-sky-500 rounded-lg hover:bg-sky-700 active:shadow-lg"
-          >
-            S'inscrire
-          </button>
-          <p className="flex justify-center items-center my-10">
-            <span>J'ai deja un compte ! </span>
+          {isLoading ? (
+            <div class="flex flex-row justify-center gap-2">
+              <div class="w-4 h-4 rounded-full bg-sky-500 animate-bounce [animation-delay:.7s]"></div>
+              <div class="w-4 h-4 rounded-full bg-sky-500 animate-bounce [animation-delay:.3s]"></div>
+              <div class="w-4 h-4 rounded-full bg-sky-500 animate-bounce [animation-delay:.7s]"></div>
+            </div>
+          ) : (
+            <button
+              type="submit"
+              className="w-full py-3 text-white duration-150 bg-sky-500 rounded-lg hover:bg-sky-700 active:shadow-lg my-5"
+            >
+              S'inscrire
+            </button>
+          )}
+          <p className="flex justify-center items-center my-5">
+            <span>J'ai déjà un compte ! </span>
             <Link to="/connexion">
               <span className="text-sky-700 font-bold mx-5"> Se Connecter</span>
             </Link>
           </p>
+          {errorMessage && <p className="text-red-500">{errorMessage}</p>}
         </form>
-        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-        <div className="relative py-10">
-          <div className="w-48 -rotate-45 h-48 rounded-2xl absolute bottom-12 -right-1 bg-sky-200"></div>
-          <div className="w-48 rotate-12 h-48 rounded-2xl absolute bottom-10 -right-16 bg-sky-500"></div>
+        <div className="relative">
+          <div className="w-56 -rotate-45 h-72 rounded-2xl absolute top-20 -right-24 bg-sky-200"></div>
+          <div className="w-56 rotate-12 h-80 rounded-2xl absolute top-28 -right-40 bg-sky-500"></div>
         </div>
       </div>
     </div>
