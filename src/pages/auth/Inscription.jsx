@@ -41,7 +41,7 @@ export const Inscription = () => {
         formData
       );
       console.log(response.data);
-      navigate("/dashboard");
+      navigate("/connexion");
       alert("Inscription reussie");
     } catch (error) {
       if (error.response) {

@@ -15,6 +15,7 @@ import MyAccount from "./pages/dashbord/MyAccount";
 import { Registerrv } from "./pages/dashbord/Registerrv";
 import { Detail } from "./pages/dashbord/Detail";
 import { AddPatient } from "./pages/dashbord/AddPatient";
+import PageVide from "./pages/PageVide";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/mc" element={<MonCompte />} />
           <Route path="/Inscription" element={<Inscription />} />
           <Route path="/connexion" element={<Connexion />} />
+          <Route path="/*" element={<PageVide />} />
         </Route>
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="/dashboard" element={<TableauDeBord />} />
