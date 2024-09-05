@@ -8,7 +8,6 @@ export default function TableauDeBord() {
     patientsCount: 0,
     rendezVousCount: 0,
   });
-
   useEffect(() => {
     const fetchStatistics = async () => {
       try {
@@ -29,22 +28,22 @@ export default function TableauDeBord() {
 
   const table = [
     {
-      className: "bg-sky-700 p-10",
+      className: "bg-sky-500 p-10",
       number: stats.rendezVousCount,
       text: "Liste des rendez-vous",
     },
     {
-      className: "bg-pink-700 p-10",
+      className: "bg-blue-800 p-10",
       number: stats.patientsCount,
       text: "Liste des patients",
     },
     {
-      className: "bg-green-700 p-10",
+      className: "bg-blue-800 p-10",
       number: stats.patientsCount,
       text: "Liste des patients",
     },
     {
-      className: "bg-yellow-700 p-10",
+      className: "bg-blue-500 p-10",
       number: stats.rendezVousCount,
       text: "Liste des rendez-vous",
     },
