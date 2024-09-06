@@ -38,7 +38,7 @@ function App() {
             <Route path="/dashboard/mes-rendez-vous" element={<Meet />} />
             <Route path="/dashboard/register" element={<Registerrv />} />
             <Route path="/dashboard/addpatient" element={<AddPatient />} />
-            <Route path="/dashboard/Detail" element={<Detail />} />
+            <Route path="/dashboard/Detail/:id" element={<Detail />} />
             <Route path="/dashboard/mes-patients" element={<MesPatients />} />
             <Route path="/dashboard/mon-compte" element={<MyAccount />} />
           </Route>

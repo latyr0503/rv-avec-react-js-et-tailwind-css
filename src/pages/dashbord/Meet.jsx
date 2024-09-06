@@ -6,12 +6,18 @@ import axios from "axios";
 
 export default function Meet() {
   const [appointments, setAppointments] = useState([]);
+  const [filteredAppointments, setFilteredAppointments] = useState([]);
+  const [filter, setFilter] = useState("");
 
+  // Fonction pour récupérer les rendez-vous
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get("https://prise-de-rv-backend-nestjs.onrender.com/rendezvous"); // Remplacez par l'URL correcte
+        const response = await axios.get(
+          "https://prise-de-rv-backend-nestjs.onrender.com/rendezvous"
+        );
         setAppointments(response.data);
+        setFilteredAppointments(response.data); // Initialiser les rendez-vous filtrés
       } catch (error) {
         console.error("Erreur lors de la récupération des rendez-vous", error);
       }
@@ -19,6 +25,19 @@ export default function Meet() {
 
     fetchAppointments();
   }, []);
+
+  // Filtrage des rendez-vous selon le nom du patient
+  useEffect(() => {
+    if (filter) {
+      setFilteredAppointments(
+        appointments.filter((appointment) =>
+          appointment.patient.toLowerCase().includes(filter.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredAppointments(appointments); // Remettre la liste initiale si pas de filtre
+    }
+  }, [filter, appointments]);
 
   return (
     <div>
@@ -35,7 +54,7 @@ export default function Meet() {
               width="50px"
               height="50px"
               viewBox="0 0 24 24"
-              className="stroke-blue-400 fill-none group-hover:fill-blue-800 group-active:stroke-blue-200 group-active:fill-blue-600 group-active:duration-0 duration-300"
+              className="stroke-sky-600 fill-none group-hover:fill-sky-800 group-active:stroke-sky-200 group-active:fill-sky-600 group-active:duration-0 duration-300"
             >
               <path
                 d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
@@ -47,30 +66,57 @@ export default function Meet() {
           </button>
         </Link>
       </div>
-      <table className="border-collapse w-11/12 mx-auto my-5 border-t-2 border-slate-500">
+
+      <label className="mx-auto block w-11/12 pb-3 font-bold">
+        Filtrer par patient
+      </label>
+      <input
+        type="text"
+        placeholder="Filtrer par patient"
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+        className="px-4 py-2 border border-sky-600 rounded-full mb-4 mx-auto block w-11/12"
+      />
+
+      {/* Tableau des rendez-vous */}
+      <table className="border-collapse w-11/12 mx-auto my-5">
+        <thead>
+          <tr className="bg-sky-500 text-white">
+            <th className="p-4 text-left w-[35%]">Motif</th>
+            <th className="p-4 text-left ">Patient</th>
+            <th className="p-4 text-left">Numéro</th>
+            <th className="p-4 text-left">Date</th>
+            <th className="p-4 text-right">Action</th>
+          </tr>
+        </thead>
         <tbody>
-          {appointments.map((item) => (
-            <tr key={item.id}>
-              <td className="border-b-2 border-slate-700 flex justify-between p-2">
-                <div className="flex flex-col">
-                  <span>
-                    le {item.date} à {item.heure} - {item.lieu}
-                  </span>
-                  <span className="font-semibold text-sky-500">
-                    {item.object}
-                  </span>
-                </div>
-                <div className="flex flex-col items-end">
-                  <span><strong>Patient :</strong> {item.patient} - <strong>suivi par Dr </strong>{item.doctor}</span>
+          {filteredAppointments.length > 0 ? (
+            filteredAppointments.map((item) => (
+              <tr key={item.id}>
+                <td className="border-b border-slate-700 p-4 w-[35%]">
+                  {item.motif}
+                </td>
+                <td className="border-b border-slate-700 p-4">{item.patient}</td>
+                <td className="border-b border-slate-700 p-4">{item.numero}</td>
+                <td className="border-b border-slate-700 p-4">
+                  le {item.date} à {item.heure}
+                </td>
+                <td className="border-b border-slate-700 p-4 ">
                   <Link to={`/dashboard/Detail/${item.id}`}>
-                    <span>
+                    <button className="float-end">
                       <FaArrowCircleRight className="text-xl text-sky-700" />
-                    </span>
+                    </button>
                   </Link>
-                </div>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4" className="text-center py-4">
+                Aucun rendez-vous trouvé.
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

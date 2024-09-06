@@ -57,10 +57,10 @@ export const Connexion = () => {
           value={formData.password}
         />
         {isLoading ? (
-          <div class="flex flex-row justify-center gap-2">
-            <div class="w-4 h-4 rounded-full bg-sky-500 animate-bounce [animation-delay:.7s]"></div>
-            <div class="w-4 h-4 rounded-full bg-sky-500 animate-bounce [animation-delay:.3s]"></div>
-            <div class="w-4 h-4 rounded-full bg-sky-500 animate-bounce [animation-delay:.7s]"></div>
+          <div className="flex flex-row justify-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-sky-500 animate-bounce [animation-delay:.7s]"></div>
+            <div className="w-4 h-4 rounded-full bg-sky-500 animate-bounce [animation-delay:.3s]"></div>
+            <div className="w-4 h-4 rounded-full bg-sky-500 animate-bounce [animation-delay:.7s]"></div>
           </div>
         ) : (
           <button
