@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "../assets/RVS 1.png";
-import userProfil from "../assets/Ellipse 12.png";
 import { Link } from "react-router-dom";
 import { IoGrid, IoHomeSharp } from "react-icons/io5";
 import { FaList, FaUserCog, FaUserFriends } from "react-icons/fa";
@@ -19,7 +18,8 @@ export const Sidebar = () => {
       path: "/dashboard/mes-patients",
       icon: <FaUserFriends />,
     },
-    { title: "Mon Compte", path: "/dashboard/mon-compte", icon: <FaUserCog /> },
+    { title: "Nos Docteurs", path: "/dashboard/docteur", icon: <FaUserCog /> },
+    // { title: "Mon Compte", path: "/dashboard/mon-compte", icon: <FaUserCog /> },
   ];
 
   const { logout } = useAuth();
@@ -33,8 +33,8 @@ export const Sidebar = () => {
         />
       </Link>
       <Link to={"/dashboard"}>
-        <button className="flex gap-3justify-center p-5 w-full bg-white">
-          <IoGrid className="text-sky-900 text-2xl" />
+        <button className="flex gap-3 justify-center p-5 w-full bg-white">
+          <IoGrid className="text-sky-900 text-2xl " />
           <span className="font-semibold text-sky-900">Tableau de bord</span>
         </button>
       </Link>

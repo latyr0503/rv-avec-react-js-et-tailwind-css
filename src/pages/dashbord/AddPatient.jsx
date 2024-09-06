@@ -44,10 +44,6 @@ export const AddPatient = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="">
-        <div className="w-48 h-36 absolute -top-5 left-64 rotate-12 rounded-2xl bg-sky-700"></div>
-        <div className="w-48 h-36 absolute top-0 left-56 rotate-12 rounded-2xl bg-sky-400"></div>
-      </div>
       <div className="w-2/4">
         <img
           src={logo}
@@ -112,10 +108,6 @@ export const AddPatient = () => {
           </div>
         </form>
         {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-      </div>
-      <div>
-        <div className="w-48 h-36 absolute bottom-16 right-0 rotate-12 rounded-2xl bg-sky-700"></div>
-        <div className="w-48 h-36 absolute bottom-24 right-0 rotate-12 rounded-2xl bg-sky-400"></div>
       </div>
     </div>
   );

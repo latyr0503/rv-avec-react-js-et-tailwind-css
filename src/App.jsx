@@ -15,6 +15,8 @@ import { AddPatient } from "./pages/dashbord/AddPatient";
 import PageVide from "./pages/PageVide";
 import { AuthProvider } from "./pages/auth/AuthProvider";
 import PrivateRoute from "./pages/auth/PrivateRoute";
+import NosDocteur from "./pages/dashbord/NosDocteur";
+import AddDoctor from "./pages/dashbord/AddDoctor";
 
 function App() {
   return (
@@ -36,11 +38,13 @@ function App() {
           >
             <Route path="/dashboard" element={<TableauDeBord />} />
             <Route path="/dashboard/mes-rendez-vous" element={<Meet />} />
+            <Route path="/dashboard/docteur" element={<NosDocteur />} />
+            <Route path="/dashboard/adddoctor" element={<AddDoctor />} />
             <Route path="/dashboard/register" element={<Registerrv />} />
             <Route path="/dashboard/addpatient" element={<AddPatient />} />
             <Route path="/dashboard/Detail/:id" element={<Detail />} />
             <Route path="/dashboard/mes-patients" element={<MesPatients />} />
-            <Route path="/dashboard/mon-compte" element={<MyAccount />} />
+            {/* <Route path="/dashboard/mon-compte" element={<MyAccount />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>
